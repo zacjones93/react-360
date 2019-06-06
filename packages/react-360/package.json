@@ -1,6 +1,9 @@
 {
   "name": "react-360-next",
   "version": "0.3.0",
+  "bin": {
+    "react-360-packager": "../scripts/packager.js"
+  },
   "description": "Experimental new version of React 360",
   "license": "BSD-3-Clause",
   "repository": {

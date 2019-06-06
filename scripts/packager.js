@@ -71,7 +71,7 @@ function runPackager() {
     process.env.PROJECT_LOCATION || path.resolve('');
 
   checkBridge(projectDir);
-  
+
   const options = {};
   const args = process.argv.slice(2);
   let protocol = "http";
@@ -90,11 +90,9 @@ function runPackager() {
   console.log(`open browser at ${protocol}://localhost:8081/index.html\n\n`);
   console.log('Starting React Native Packager...');
   // Allow overriding the CLI location with an env variable
-  const cliLocation =
-    process.env.RN_CLI_LOCATION ||
-    path.resolve('node_modules', 'react-native', 'local-cli', 'cli.js');
+  const cliLocation = [process.env.RN_CLI_LOCATION] || [process.env.npm_execpath, 'run', 'react-native'];
 
-  const node_args = [cliLocation, 'start'];
+  const node_args = [...cliLocation, 'start'];
   for (const opt in options) {
     node_args.push(`--${opt}`);
     if (options[opt] != null) {
